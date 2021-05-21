@@ -139,3 +139,8 @@ RDEPENDS_${PN} = "\
 		'${NILRT_NXG_PACKAGES}', \
 		'${NILRT_PACKAGES}', d)} \
 "
+
+# python is very large and tends to sneak in as a dependency; we want to
+# ensure that this does not accidentally included in the base packagegroup.
+inherit qa-denydeps
+RDENYDEPENDS_${PN} += "python-core python3-core"
